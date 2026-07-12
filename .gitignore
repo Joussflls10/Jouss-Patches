@@ -1,0 +1,26 @@
+# Secrets
+.env
+Morphe.keystore
+
+# Large/generated
+analysis/
+MorpheApp/
+ai-docs/
+paresh-patches/
+
+# Binaries/symlinks
+morphe-cli.jar
+
+# Kiro internal
+skills-lock.json
+morphe-temporary-files/
+*.apk
+*.apkm
+*.xapk
+*.apks
+*:Zone.Identifier
+
+# Misc
+app/
+morphe-cli-new.jar
+morphe-data/
