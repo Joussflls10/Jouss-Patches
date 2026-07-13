@@ -48,3 +48,16 @@ object EntitlementInfoGetVerificationFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf()
 )
+
+// Superwall Entitlements.setSubscriptionStatus — The JS bridge (SuperwallReactNativeModule.setSubscriptionStatus)
+// calls this to mirror the RevenueCat subscription state. If RevenueCat has no entitlements configured,
+// the JS app sends an empty entitlements list, which Superwall downgrades to INACTIVE. This patch forces
+// the status to always be ACTIVE with a synthetic entitlement, regardless of what the JS app sends.
+object SuperwallSetSubscriptionStatusFingerprint : Fingerprint(
+    definingClass = "Lcom/superwall/sdk/store/Entitlements;",
+    name = "setSubscriptionStatus",
+    returnType = "V",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("Lcom/superwall/sdk/models/entitlements/SubscriptionStatus;")
+)
+
