@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Name: Jouss Patches
+Description: Community-maintained Android app patches
+Version: 1.20.0
+Timestamp: 1783957931577
+Source: https://github.com/Joussflls10/Jouss-Patches
+Author: Joussflls10
+Contact: https://github.com/Joussflls10/Jouss-Patches/issues
+Website: https://github.com/Joussflls10/Jouss-Patches
+License: GPLv3
+Patcher-Version: 1.5.0
+

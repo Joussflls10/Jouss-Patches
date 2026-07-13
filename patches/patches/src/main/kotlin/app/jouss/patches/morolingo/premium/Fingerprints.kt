@@ -1,9 +1,7 @@
 package app.jouss.patches.morolingo.premium
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.fieldAccess
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 
 // LicenseClient.processResponse — Pairip license check callback
 // responseCode p1: 0=LICENSED, 2=NOT_LICENSED (shows paywall/kills app), 3=ERROR
@@ -21,20 +19,32 @@ object PairipValidateResponseFingerprint : Fingerprint(
     returnType = "V",
 )
 
-// EntitlementInfo.getIsActive() — RevenueCat deepest entitlement check
-// Compiled as component2()Z in smali (Kotlin data class property getter)
-// Patching to return true cascades through entire pipeline: EntitlementInfos.getActive(),
-// EntitlementInfosMapper, and the JS bridge — JS receives all entitlements as active
+// EntitlementInfo.isActive() — RevenueCat boolean property getter
+// The EntitlementInfoMapper and JS bridge both call this. Force it to return true.
 object EntitlementInfoIsActiveFingerprint : Fingerprint(
     definingClass = "Lcom/revenuecat/purchases/EntitlementInfo;",
+    name = "isActive",
     returnType = "Z",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    parameters = listOf(),
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_BOOLEAN,
-            definingClass = "Lcom/revenuecat/purchases/EntitlementInfo;",
-            name = "isActive"
-        )
-    )
+    parameters = listOf()
+)
+
+// EntitlementInfo.getWillRenew() — RevenueCat boolean property getter
+// Force subscription to appear renewable so the app treats it as a valid premium subscription.
+object EntitlementInfoGetWillRenewFingerprint : Fingerprint(
+    definingClass = "Lcom/revenuecat/purchases/EntitlementInfo;",
+    name = "getWillRenew",
+    returnType = "Z",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf()
+)
+
+// EntitlementInfo.getVerification() — RevenueCat verification status
+// Force verification to VERIFIED so the app never treats the entitlement as unverified.
+object EntitlementInfoGetVerificationFingerprint : Fingerprint(
+    definingClass = "Lcom/revenuecat/purchases/EntitlementInfo;",
+    name = "getVerification",
+    returnType = "Lcom/revenuecat/purchases/VerificationResult;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf()
 )

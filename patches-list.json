@@ -1,5 +1,5 @@
 {
-  "version": "1.19.0",
+  "version": "1.20.0",
   "patches": [
     {
       "name": "Morolingo Premium",
@@ -1361,7 +1361,7 @@
     },
     {
       "name": "Unlock Premium",
-      "description": "Unlocks all premium missions — Lights On, Step & Walk Off, Push-Up, Squats, Jumping Jack, and Wake Up check.",
+      "description": "Unlocks all premium missions \u2014 Lights On, Step & Walk Off, Push-Up, Squats, Jumping Jack, and Wake Up check.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -1386,7 +1386,7 @@
     },
     {
       "name": "Unlock Pro",
-      "description": "Unlocks SD Maid SE Pro features — full history, scheduled operations, extra options, custom rules.",
+      "description": "Unlocks SD Maid SE Pro features \u2014 full history, scheduled operations, extra options, custom rules.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -1411,7 +1411,7 @@
     },
     {
       "name": "Unlock Pro",
-      "description": "Unlocks Pro features — auto refresh, advanced process management, and all settings.",
+      "description": "Unlocks Pro features \u2014 auto refresh, advanced process management, and all settings.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

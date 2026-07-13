@@ -1,0 +1,7 @@
+app.jouss.extension-pngs-0 /home/joussflls10/morphe-ai/patches/extensions/extension/build/generated/res/pngs/release
+app.jouss.extension-updated_navigation_xml-1 /home/joussflls10/morphe-ai/patches/extensions/extension/build/generated/updated_navigation_xml/release
+app.jouss.extension-packageReleaseResources-2 /home/joussflls10/morphe-ai/patches/extensions/extension/build/intermediates/incremental/release/packageReleaseResources/merged.dir
+app.jouss.extension-packageReleaseResources-3 /home/joussflls10/morphe-ai/patches/extensions/extension/build/intermediates/incremental/release/packageReleaseResources/stripped.dir
+app.jouss.extension-release-4 /home/joussflls10/morphe-ai/patches/extensions/extension/build/intermediates/merged_res/release/mergeReleaseResources
+app.jouss.extension-main-5 /home/joussflls10/morphe-ai/patches/extensions/extension/src/main/res
+app.jouss.extension-release-6 /home/joussflls10/morphe-ai/patches/extensions/extension/src/release/res

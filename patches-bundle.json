@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-07-13T15:16:00",
-  "description": "# [1.19.0] Jouss Patches\n\n### Features\n\n* add Morolingo Premium patch — bypasses Pairip license check + RevenueCat entitlement check + Superwall paywall",
-  "download_url": "https://github.com/Joussflls10/Jouss-Patches/releases/download/v1.19.0/patches-1.19.0.mpp",
+  "created_at": "2026-07-13T17:52:30",
+  "description": "# [1.20.0] Jouss Patches\n\n### Fixes\n\n* Correct Morolingo Premium patch to target EntitlementInfo.isActive() instead of component2()\n* Add getWillRenew() and getVerification() bypasses",
+  "download_url": "https://github.com/Joussflls10/Jouss-Patches/releases/download/v1.20.0/patches-1.20.0.mpp",
   "signature_download_url": "",
-  "version": "1.19.0"
+  "version": "1.20.0"
 }

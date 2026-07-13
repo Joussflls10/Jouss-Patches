@@ -1,0 +1,16 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="app.jouss.extension" >
+4
+5    <uses-sdk
+5-->INJECTED
+6        android:minSdkVersion="26"
+6-->INJECTED
+7        android:targetSdkVersion="36" />
+7-->INJECTED
+8
+9    <application android:extractNativeLibs="false" />
+9-->INJECTED
+9-->INJECTED
+10
+11</manifest>
