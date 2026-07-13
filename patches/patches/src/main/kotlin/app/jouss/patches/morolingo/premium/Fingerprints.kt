@@ -49,6 +49,20 @@ object EntitlementInfoGetVerificationFingerprint : Fingerprint(
     parameters = listOf()
 )
 
+// CustomerInfo.getActiveSubscriptions() — THE KEY FIX
+// The JS app's hasActiveEntitlementOrSubscription() checks activeSubscriptions.length > 0 FIRST.
+// If the user never subscribed, RevenueCat returns an empty set and the app shows the paywall.
+// Our EntitlementInfo.isActive() patch is useless here because there are ZERO EntitlementInfo objects.
+// Patching getActiveSubscriptions() to return a non-empty set makes the JS app see an active subscription
+// and call setIsPremiumUser(true), unlocking all premium features.
+object CustomerInfoGetActiveSubscriptionsFingerprint : Fingerprint(
+    definingClass = "Lcom/revenuecat/purchases/CustomerInfo;",
+    name = "getActiveSubscriptions",
+    returnType = "Ljava/util/Set;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf()
+)
+
 // Superwall Entitlements.setSubscriptionStatus — The JS bridge (SuperwallReactNativeModule.setSubscriptionStatus)
 // calls this to mirror the RevenueCat subscription state. If RevenueCat has no entitlements configured,
 // the JS app sends an empty entitlements list, which Superwall downgrades to INACTIVE. This patch forces

@@ -41,7 +41,19 @@ val morolingoPremiumPatch = bytecodePatch(
             return-object v0
         """)
 
-        // 6. Force Superwall subscription status to always be ACTIVE.
+        // 6. THE KEY FIX: Force CustomerInfo.getActiveSubscriptions() to return a non-empty set.
+        //    The JS app's hasActiveEntitlementOrSubscription() checks activeSubscriptions.length > 0 FIRST.
+        //    If the user never subscribed, RevenueCat returns an empty set → the app shows the paywall.
+        //    Our EntitlementInfo.isActive() patch above is useless when there are ZERO EntitlementInfo objects.
+        //    This patch makes the JS app see an active subscription and call setIsPremiumUser(true).
+        CustomerInfoGetActiveSubscriptionsFingerprint.method.addInstructions(0, """
+            const-string v0, "premium"
+            invoke-static {v0}, Ljava/util/Collections;->singleton(Ljava/lang/Object;)Ljava/util/Set;
+            move-result-object v0
+            return-object v0
+        """)
+
+        // 7. Force Superwall subscription status to always be ACTIVE.
         //    The React Native layer mirrors RevenueCat state into Superwall via
         //    SuperwallReactNativeModule.setSubscriptionStatus -> Entitlements.setSubscriptionStatus.
         //    If RevenueCat has no entitlements configured, the JS app sends an empty entitlement list
