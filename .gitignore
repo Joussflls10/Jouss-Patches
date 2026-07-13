@@ -6,7 +6,8 @@ Morphe.keystore
 analysis/
 MorpheApp/
 ai-docs/
-paresh-patches/
+morphe-data/
+builds/
 
 # Binaries/symlinks
 morphe-cli.jar
@@ -23,4 +24,8 @@ morphe-temporary-files/
 # Misc
 app/
 morphe-cli-new.jar
-morphe-data/
+
+# Gradle
+**/build/
+**/.gradle/
+*.mpp
